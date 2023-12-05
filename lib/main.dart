@@ -12,12 +12,6 @@ Future<void> main()async {
  
   await LocalStorageManager.init();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-  //   statusBarColor: Colors.transparent,
-  //   statusBarIconBrightness: Brightness.dark,
-  //   statusBarBrightness: Brightness.dark,
-  // ));
- // RenderRepaintBoundary.debugCheckChildCountLimit(null);
   runApp(const ProviderScope(child: MyApp()));
 }
 class MyApp extends ConsumerWidget {
@@ -41,7 +35,7 @@ class MyApp extends ConsumerWidget {
                   statusBarColor: Colors.transparent),
               child: GetMaterialApp(
                   debugShowCheckedModeBanner: false,
-                  title: 'Customer',
+                  title: 'Movemate',
                   darkTheme: themeDataMode.isdarkTheme!
                       ? themeDataMode.darkTheme
                       : themeDataMode.lightTheme,

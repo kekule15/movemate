@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 
 class AppColors extends ChangeNotifier {
-  static const themeGreen = Color(0xFF265156);
-  static const themeOrange = Color(0xFFFF6928);
+  static const themeGreen = Color(0xFF46348C);
+  static const themeOrange = Color(0xFFE2803B);
   static const themeBlue = Color(0xFF123257);
   static const lightBlueTheme = Color(0xFF4BA6BA);
   static const riverBlue = Color(0xFFEDF6F8);

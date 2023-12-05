@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 // ignore: depend_on_referenced_packages
 import 'package:get/get.dart';
 import 'package:movemate/style/appColors.dart';
@@ -24,7 +25,6 @@ class _SplashViewState extends ConsumerState<SplashView>
 
   @override
   void initState() {
-    
     _controller =
         AnimationController(vsync: this, duration: const Duration(seconds: 2));
     time = Tween(begin: 0.0, end: 20.0).animate(CurvedAnimation(
@@ -48,12 +48,16 @@ class _SplashViewState extends ConsumerState<SplashView>
 
   @override
   Widget build(BuildContext context) {
-    //bool _visible = true;
+  
 
-    return const Scaffold(
-      backgroundColor: AppColors.themeGreen,
+    return Scaffold(
+        backgroundColor: AppColors.white,
         body: Center(
-      child: ImageWidget(asset: splashLogoIcon),
-    ));
+          child: ImageWidget(
+            asset: splashLogoIcon,
+            width: 200.w,
+            height: 100.h,
+          ),
+        ));
   }
 }
