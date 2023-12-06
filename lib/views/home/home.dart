@@ -17,6 +17,21 @@ class HomeView extends ConsumerStatefulWidget {
 }
 
 class _HomeViewState extends ConsumerState<HomeView> {
+  final vehicleIconList = <String>[
+    oceanFreightImage,
+    cargoFreightImage,
+    oceanFreightImage
+  ];
+  final vehicleTitleText = <String>[
+    "Ocean Freight",
+    "Cargo Freight",
+    "Air Freight",
+  ];
+  final vehicleSubTitleText = <String>[
+    "International",
+    "Reliable",
+    "International",
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +39,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
         children: [
           headerWidget(),
           Padding(
-            padding: EdgeInsets.only(top: 201.h),
+            padding: EdgeInsets.only(top: 170.h),
             child: bodyWidget(),
           ),
         ],
@@ -34,7 +49,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
 
   Widget headerWidget() {
     return Container(
-      height: 200.h,
+      height: 170.h,
       width: MediaQuery.sizeOf(context).width,
       decoration: const BoxDecoration(
         color: AppColors.primary,
@@ -45,13 +60,14 @@ class _HomeViewState extends ConsumerState<HomeView> {
         child: Column(
           children: [
             SizedBox(
-              height: 50.h,
+              height: 40.h,
             ),
             ListTile(
               contentPadding: EdgeInsets.zero,
               leading: CircleAvatar(
                 radius: 20.r,
                 backgroundColor: AppColors.white,
+                backgroundImage: AssetImage(picAvatar),
               ),
               title: Row(
                 children: [
@@ -159,11 +175,11 @@ class _HomeViewState extends ConsumerState<HomeView> {
         Padding(
           padding:
               EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w - 10),
-          child: Card(
+          child: Container(
+            decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.circular(12.r)),
             margin: EdgeInsets.zero,
-            elevation: 1.w,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.r)),
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 8.w),
               child: Column(
@@ -271,7 +287,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
         ),
         Padding(
           padding:
-          EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w - 10),
+              EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w - 10),
           child: SingleTextLineWidget(
             text: "Available vehicles",
             size: 14.sp,
@@ -280,6 +296,57 @@ class _HomeViewState extends ConsumerState<HomeView> {
         ),
         SizedBox(
           height: 10.h,
+        ),
+        SizedBox(
+          height: 150.h,
+          child: ListView(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(),
+              children: List.generate(
+                  vehicleIconList.length,
+                  (index) => Container(
+                        margin: EdgeInsets.only(left: 14.w),
+                        width: 140.w,
+                        height: 170.h,
+                        decoration: BoxDecoration(
+                          color: AppColors.white,
+                          borderRadius: BorderRadius.circular(5.r),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: SingleTextLineWidget(
+                                text: vehicleTitleText[index],
+                                weight: FontWeight.w600,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 2.h,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 8.w),
+                              child: SingleTextLineWidget(
+                                text: vehicleSubTitleText[index],
+                                size: 10.sp,
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: ImageWidget(
+                                asset: vehicleIconList[index],
+                                height: 120,
+                                // width: MediaQuery.sizeOf(context).width,
+                              ),
+                            )
+                          ],
+                        ),
+                      ))),
+        ),
+        SizedBox(
+          height: 50.h,
         ),
       ],
     );

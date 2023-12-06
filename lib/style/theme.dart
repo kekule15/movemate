@@ -222,8 +222,8 @@ class ThemeProvider extends ChangeNotifier {
         onSecondary: AppColors.dropDownBorderColor,
         error: AppColors.primary,
         onError: AppColors.primary,
-        background: AppColors.white,
-        onBackground: AppColors.white,
+        background: AppColors.backgroundColor,
+        onBackground: AppColors.backgroundColor,
         surface: AppColors.black,
         onSurface: AppColors.black,
       ),
@@ -251,7 +251,7 @@ class ThemeProvider extends ChangeNotifier {
         inputDecorationTheme: const InputDecorationTheme(
             filled: true, fillColor: AppColors.white),
       ),
-      scaffoldBackgroundColor: AppColors.white,
+      scaffoldBackgroundColor: AppColors.backgroundColor,
       scrollbarTheme: ScrollbarThemeData(
         interactive: true,
         // isAlwaysShown: true,

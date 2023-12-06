@@ -26,6 +26,7 @@ class AppColors extends ChangeNotifier {
   static const lightGrey = Color(0xFFCDD9E3);
 
   static const dropDownBorderColor = Color(0xFFC4C4C4);
+  static const backgroundColor = Color.fromARGB(255, 246, 246, 246);
   static const red = Color.fromRGBO(244, 67, 54, 1);
   static const warning = Color(0xFFEAD918);
   static const purple = Color(0xFFA43FB9);
