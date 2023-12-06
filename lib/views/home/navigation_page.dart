@@ -32,6 +32,7 @@ class _HomeNavigation extends ConsumerState<HomeNavigation> {
     // can not navigate back to exit the page
     final viewModel = ref.watch(homeViewModel);
     Future<bool> onBackPressed() {
+      viewModel.changeIndex(0);
       return Future.delayed(const Duration(seconds: 2));
     }
 
@@ -41,7 +42,7 @@ class _HomeNavigation extends ConsumerState<HomeNavigation> {
     return WillPopScope(
       onWillPop: onBackPressed,
       child: Scaffold(
-        bottomNavigationBar: AnimatedBottomNavigationBar.builder(
+        bottomNavigationBar:  AnimatedBottomNavigationBar.builder(
           elevation: 0,
           backgroundColor: AppColors.white,
           itemCount: iconList.length,

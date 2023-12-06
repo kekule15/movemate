@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movemate/providers/home_navigation_provider.dart';
 import 'package:movemate/style/appColors.dart';
 import 'package:movemate/utils/constvalues.dart';
 import 'package:movemate/views/home/shipment/canceled_shipment.dart';
@@ -82,6 +83,7 @@ class _HomeViewState extends ConsumerState<ShippingView> {
   Widget headerWidget() {
     var stateValue = ref.watch(shipmentTabProvider);
     var toggleStateValue = ref.read(shipmentTabProvider.notifier);
+    final viewModel = ref.watch(homeViewModel);
     return Container(
       height: 139.h,
       width: MediaQuery.sizeOf(context).width,
@@ -93,14 +95,34 @@ class _HomeViewState extends ConsumerState<ShippingView> {
           SizedBox(
             height: 50.h,
           ),
-          SingleTextLineWidget(
-            text: "Shipment history",
-            color: AppColors.white,
-            weight: FontWeight.bold,
-            size: 18.sp,
+          Padding(
+            padding:
+                EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: () {
+                    viewModel.changeIndex(0);
+                  },
+                  child: Icon(
+                    Icons.arrow_back_ios_new_outlined,
+                    color: AppColors.white,
+                    size: 20.w,
+                  ),
+                ),
+                SingleTextLineWidget(
+                  text: "Shipment history",
+                  color: AppColors.white,
+                  weight: FontWeight.bold,
+                  size: 18.sp,
+                ),
+                const SizedBox()
+              ],
+            ),
           ),
           SizedBox(
-            height: 20.h,
+            height: 19.h,
           ),
           SizedBox(
             height: 50.h,

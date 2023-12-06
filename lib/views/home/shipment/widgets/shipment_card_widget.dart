@@ -43,12 +43,15 @@ class ShipmentCardWidget extends ConsumerWidget {
                 dense: true,
                 isThreeLine: true,
                 contentPadding: EdgeInsets.zero,
-                title: SingleTextLineWidget(
-                  text: title,
-                  color: AppColors.black,
-                  weight: FontWeight.bold,
-                  size: 14.sp,
-                  height: 2,
+                title: Padding(
+                  padding: const EdgeInsets.only(bottom: 4),
+                  child: SingleTextLineWidget(
+                    text: title,
+                    color: AppColors.black,
+                    weight: FontWeight.bold,
+                    size: 14.sp,
+                    height: 2,
+                  ),
                 ),
                 subtitle: SingleTextLineWidget(
                   text:
