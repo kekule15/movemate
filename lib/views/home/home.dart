@@ -59,7 +59,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
       ),
       child: Padding(
         padding:
-            EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w - 10),
+            EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w ),
         child: Column(
           children: [
             SizedBox(
@@ -130,7 +130,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
               borderRadius: 20.r,
               readonly: true,
               onTap: () {
-                Get.to(() => SearchScreenView());
+                Get.to(() =>const SearchScreenView());
               },
               pIcon: Icon(
                 Icons.search,
@@ -164,14 +164,15 @@ class _HomeViewState extends ConsumerState<HomeView> {
   Widget bodyWidget() {
     return ListView(
       shrinkWrap: true,
+      padding: EdgeInsets.zero,
       physics: const BouncingScrollPhysics(),
       children: [
-        SizedBox(
-          height: 0.h,
+      SizedBox(
+          height: 15.h,
         ),
         Padding(
           padding:
-              EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w - 10),
+              EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w ),
           child: SingleTextLineWidget(
             text: "Tracking",
             size: 14.sp,
@@ -183,7 +184,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
         ),
         Padding(
           padding:
-              EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w - 10),
+              EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w ),
           child: Container(
             decoration: BoxDecoration(
                 color: AppColors.white,
@@ -296,7 +297,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
         ),
         Padding(
           padding:
-              EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w - 10),
+              EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w ),
           child: SingleTextLineWidget(
             text: "Available vehicles",
             size: 14.sp,

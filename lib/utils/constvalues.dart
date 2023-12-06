@@ -1,6 +1,6 @@
 const borderRadius = 30.0;
 const dialogBorderRadius = 10.0;
-const generalHorizontalPadding = 24.0;
+const generalHorizontalPadding = 20.0;
 const customFieldPadding = 25.0;
 const buttonPadding = 40.0;
 const inputFieldHeight = 56.0;

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:movemate/style/appColors.dart';
 import 'package:movemate/utils/constvalues.dart';
 import 'package:movemate/utils/svgs.dart';
@@ -43,7 +42,7 @@ class _SearchScreenViewState extends ConsumerState<SearchScreenView> {
       ),
       child: Padding(
         padding:
-            EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w - 10),
+            EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w ),
         child: Column(
           children: [
             SizedBox(
@@ -100,7 +99,7 @@ class _SearchScreenViewState extends ConsumerState<SearchScreenView> {
 
   Widget bodyWidget() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w - 10),
+      margin: EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w ),
       height: 270.h,
       decoration: BoxDecoration(
         color: AppColors.white,

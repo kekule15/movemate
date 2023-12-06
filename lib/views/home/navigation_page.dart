@@ -8,7 +8,7 @@ import 'package:movemate/style/appColors.dart';
 import 'package:movemate/views/home/calculate.dart';
 import 'package:movemate/views/home/home.dart';
 import 'package:movemate/views/home/profile.dart';
-import 'package:movemate/views/home/shipping.dart';
+import 'package:movemate/views/home/shipment/shipping.dart';
 import 'package:movemate/widgets/nav_card_widget.dart';
 
 class HomeNavigation extends ConsumerStatefulWidget {

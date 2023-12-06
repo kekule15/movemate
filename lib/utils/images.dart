@@ -10,3 +10,5 @@ const oceanFreightImage = 'assets/images/ocean_freight.png';
 const cargoFreightImage = 'assets/images/cargo_freight.png';
 
 const picAvatar = 'assets/images/aug_linkdin.jpeg';
+
+const loadIcon = 'assets/images/load.png';

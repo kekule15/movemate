@@ -163,7 +163,7 @@ class CustomField extends ConsumerWidget {
                                         .withOpacity(0.4),
                                     width: 1),
                                 borderRadius:
-                                    BorderRadius.circular(borderRadius!)),
+                                    BorderRadius.circular(borderRadius)),
                         focusedBorder: focusedBorder ??
                             OutlineInputBorder(
                                 borderSide: BorderSide(

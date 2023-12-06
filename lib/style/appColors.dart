@@ -6,7 +6,7 @@ class AppColors extends ChangeNotifier {
   static const themeGreen = Color(0xFF46348C);
   static const themeOrange = Color(0xFFE2803B);
   static const themeBlue = Color(0xFF123257);
-  static const lightBlueTheme = Color(0xFF4BA6BA);
+  static const lightBlueTheme = Color.fromARGB(255, 17, 116, 237);
   static const riverBlue = Color(0xFFEDF6F8);
   static const themeYellow = Color(0xFFFFC268);
   static const primary = themeGreen;
