@@ -58,6 +58,7 @@ class _HomeViewState extends ConsumerState<ShippingView> {
                   SingleTextLineWidget(
                     text: "Shipments",
                     weight: FontWeight.bold,
+                    color: AppColors.headerTextColor,
                     size: 18.sp,
                   ),
                   SizedBox(
@@ -189,6 +190,8 @@ class _HomeViewState extends ConsumerState<ShippingView> {
       ),
     );
   }
+
+
 
   Widget bodyWidget() {
     return ListView(

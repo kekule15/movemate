@@ -10,9 +10,10 @@ class AppColors extends ChangeNotifier {
   static const riverBlue = Color(0xFFEDF6F8);
   static const themeYellow = Color(0xFFFFC268);
   static const primary = themeGreen;
-  // static const activNavColor = Color(0xFFF9F5F2);
+  
+ static const headerTextColor = Color(0xFF16213C);
   // static const secondary = Color(0xFF265056);
-  static const secondary = Color(0xFFF9F5F2);
+  static const secondary = Color.fromARGB(255, 236, 223, 214);
   static const gray = Color.fromARGB(255, 170, 170, 170);
   static const green = Color.fromARGB(255, 23, 196, 101);
   static const gray4 = Color(0xFF495057);

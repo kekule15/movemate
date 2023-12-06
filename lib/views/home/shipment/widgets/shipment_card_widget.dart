@@ -47,7 +47,7 @@ class ShipmentCardWidget extends ConsumerWidget {
                   padding: const EdgeInsets.only(bottom: 4),
                   child: SingleTextLineWidget(
                     text: title,
-                    color: AppColors.black,
+                    color: AppColors.headerTextColor,
                     weight: FontWeight.bold,
                     size: 14.sp,
                     height: 2,

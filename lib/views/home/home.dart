@@ -176,6 +176,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
           child: SingleTextLineWidget(
             text: "Tracking",
             size: 14.sp,
+            color: AppColors.headerTextColor,
             weight: FontWeight.bold,
           ),
         ),
@@ -302,6 +303,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
             text: "Available vehicles",
             size: 14.sp,
             weight: FontWeight.bold,
+            color: AppColors.headerTextColor,
           ),
         ),
         SizedBox(

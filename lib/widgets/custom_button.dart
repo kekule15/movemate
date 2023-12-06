@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movemate/style/appColors.dart';
@@ -13,6 +12,7 @@ class ActionCustomButton extends StatelessWidget {
   final bool isLoading;
   final bool? disabeled;
   final double? shadow;
+  final double? borderRadius;
 
   const ActionCustomButton(
       {Key? key,
@@ -24,6 +24,7 @@ class ActionCustomButton extends StatelessWidget {
       this.loadingColor,
       this.disabeled = false,
       this.shadow,
+      this.borderRadius,
       this.isLoading = false})
       : super(key: key);
 
@@ -41,10 +42,11 @@ class ActionCustomButton extends StatelessWidget {
         height: 47.h,
         child: Card(
           elevation: shadow ?? 0,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(7.r)),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(borderRadius ?? 7.r)),
           color: disabeled!
-              ? btnColor?.withOpacity(0.2) ?? AppColors.themeGreen.withOpacity(0.2)
+              ? btnColor?.withOpacity(0.2) ??
+                  AppColors.themeGreen.withOpacity(0.2)
               : btnColor ?? AppColors.themeGreen,
           child: Center(
             child: isLoading

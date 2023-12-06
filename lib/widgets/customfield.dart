@@ -47,6 +47,7 @@ class CustomField extends ConsumerWidget {
       this.textInputFormatters,
       this.shape = BoxShape.rectangle,
       this.mainAxisAlignment,
+      this.hasBorder = false,
       this.borderRadius = 10,
       this.showPinPrefilledWidget = true,
       this.obscuringCharacter,
@@ -90,6 +91,7 @@ class CustomField extends ConsumerWidget {
   final int? pinPutFieldCount;
   final MainAxisAlignment? mainAxisAlignment;
   final bool showPinPrefilledWidget;
+  final bool hasBorder;
   final String? obscuringCharacter;
   final double borderRadius;
   final List<TextInputFormatter>? textInputFormatters;
@@ -158,27 +160,39 @@ class CustomField extends ConsumerWidget {
                         focusColor: fillColor,
                         enabledBorder: enabledBorder ??
                             OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: AppColors.termsTextColor
-                                        .withOpacity(0.4),
-                                    width: 1),
+                                borderSide: hasBorder
+                                    ? BorderSide(
+                                        color: AppColors.termsTextColor
+                                            .withOpacity(0.4),
+                                        width: 1)
+                                    : BorderSide.none,
                                 borderRadius:
                                     BorderRadius.circular(borderRadius)),
                         focusedBorder: focusedBorder ??
                             OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: AppColors.termsTextColor
-                                        .withOpacity(0.4),
-                                    width: 1),
+                                borderSide: hasBorder
+                                    ? BorderSide(
+                                        color: AppColors.termsTextColor
+                                            .withOpacity(0.4),
+                                        width: 1)
+                                    : BorderSide.none,
                                 borderRadius:
                                     BorderRadius.circular(borderRadius)),
                         errorBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                                color: AppColors.primary, width: 1),
+                            borderSide: hasBorder
+                                ? BorderSide(
+                                    color: AppColors.termsTextColor
+                                        .withOpacity(0.4),
+                                    width: 1)
+                                : BorderSide.none,
                             borderRadius: BorderRadius.circular(borderRadius)),
                         focusedErrorBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                                color: AppColors.primary, width: 1),
+                            borderSide: hasBorder
+                                ? BorderSide(
+                                    color: AppColors.termsTextColor
+                                        .withOpacity(0.4),
+                                    width: 1)
+                                : BorderSide.none,
                             borderRadius: BorderRadius.circular(borderRadius)),
                         border: border,
                         contentPadding: contentPadding,
