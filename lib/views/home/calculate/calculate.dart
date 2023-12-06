@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:movemate/providers/calculate_provider.dart';
 import 'package:movemate/providers/home_navigation_provider.dart';
 import 'package:movemate/style/appColors.dart';
 import 'package:movemate/utils/constvalues.dart';
 import 'package:movemate/utils/images.dart';
 import 'package:movemate/utils/logger.dart';
+import 'package:movemate/views/home/calculate/total_estimate_view.dart';
 import 'package:movemate/views/home/calculate/widgets/multi_card_option_widget.dart';
 import 'package:movemate/widgets/custom_button.dart';
 import 'package:movemate/widgets/customfield.dart';
@@ -257,7 +259,9 @@ class _CalculatorViewState extends ConsumerState<CalculatorView> {
               title: "Calculate",
               titleColor: AppColors.white,
               isLoading: false,
-              onclick: () {}),
+              onclick: () {
+                Get.to(()=> const TotalEstimateView());
+              }),
           SizedBox(
             height: 50.w,
           ),
