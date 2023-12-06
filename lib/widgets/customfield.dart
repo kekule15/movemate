@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -48,6 +47,7 @@ class CustomField extends ConsumerWidget {
       this.textInputFormatters,
       this.shape = BoxShape.rectangle,
       this.mainAxisAlignment,
+      this.borderRadius = 10,
       this.showPinPrefilledWidget = true,
       this.obscuringCharacter,
       this.validator})
@@ -91,6 +91,7 @@ class CustomField extends ConsumerWidget {
   final MainAxisAlignment? mainAxisAlignment;
   final bool showPinPrefilledWidget;
   final String? obscuringCharacter;
+  final double borderRadius;
   final List<TextInputFormatter>? textInputFormatters;
 
   @override
@@ -157,29 +158,35 @@ class CustomField extends ConsumerWidget {
                         focusColor: fillColor,
                         enabledBorder: enabledBorder ??
                             OutlineInputBorder(
-                                borderSide:  BorderSide(
-                                    color: AppColors.termsTextColor.withOpacity(0.4), width: 1),
-                                borderRadius: BorderRadius.circular(10)),
+                                borderSide: BorderSide(
+                                    color: AppColors.termsTextColor
+                                        .withOpacity(0.4),
+                                    width: 1),
+                                borderRadius:
+                                    BorderRadius.circular(borderRadius!)),
                         focusedBorder: focusedBorder ??
                             OutlineInputBorder(
-                                borderSide:  BorderSide(
-                                    color: AppColors.termsTextColor.withOpacity(0.4), width: 1),
-                                borderRadius: BorderRadius.circular(10)),
+                                borderSide: BorderSide(
+                                    color: AppColors.termsTextColor
+                                        .withOpacity(0.4),
+                                    width: 1),
+                                borderRadius:
+                                    BorderRadius.circular(borderRadius)),
                         errorBorder: OutlineInputBorder(
-                            borderSide:  const BorderSide(
+                            borderSide: const BorderSide(
                                 color: AppColors.primary, width: 1),
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(borderRadius)),
                         focusedErrorBorder: OutlineInputBorder(
-                            borderSide:  const BorderSide(
+                            borderSide: const BorderSide(
                                 color: AppColors.primary, width: 1),
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(borderRadius)),
                         border: border,
                         contentPadding: contentPadding,
                         errorMaxLines: 6,
                         labelText: headtext,
                         prefixIcon: pIcon,
                         suffixIcon: sIcon,
-                       // hintText: hint,
+                        // hintText: hint,
                         labelStyle: hintstyle ??
                             Theme.of(context)
                                 .primaryTextTheme

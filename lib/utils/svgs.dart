@@ -1,2 +1,4 @@
-const onbaordingIcon1 = 'assets/svgs/onboarding1.svg';
+const recieveIcon = 'assets/svgs/recieve.svg';
+
+const sendIcon = 'assets/svgs/send.svg';
 
