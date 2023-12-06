@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_core/get_core.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:movemate/style/appColors.dart';
 import 'package:movemate/utils/constvalues.dart';
 import 'package:movemate/utils/images.dart';
 import 'package:movemate/utils/svgs.dart';
+import 'package:movemate/views/home/search_screen.dart';
 import 'package:movemate/widgets/customfield.dart';
 import 'package:movemate/widgets/image_widgets.dart';
 import 'package:movemate/widgets/single_text_line_widget.dart';
@@ -67,7 +70,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
               leading: CircleAvatar(
                 radius: 20.r,
                 backgroundColor: AppColors.white,
-                backgroundImage: AssetImage(picAvatar),
+                backgroundImage: const AssetImage(picAvatar),
               ),
               title: Row(
                 children: [
@@ -125,11 +128,15 @@ class _HomeViewState extends ConsumerState<HomeView> {
             ),
             CustomField(
               borderRadius: 20.r,
+              readonly: true,
+              onTap: () {
+                Get.to(() => SearchScreenView());
+              },
               pIcon: Icon(
                 Icons.search,
                 size: 18.w,
               ),
-              headtext: "Enter the receipt number ...",
+              hint: "Enter the receipt number ...",
               sIcon: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
@@ -156,6 +163,8 @@ class _HomeViewState extends ConsumerState<HomeView> {
 
   Widget bodyWidget() {
     return ListView(
+      shrinkWrap: true,
+      physics: const BouncingScrollPhysics(),
       children: [
         SizedBox(
           height: 0.h,
@@ -306,44 +315,44 @@ class _HomeViewState extends ConsumerState<HomeView> {
               children: List.generate(
                   vehicleIconList.length,
                   (index) => Container(
-                        margin: EdgeInsets.only(left: 14.w),
-                        width: 140.w,
-                        height: 170.h,
-                        decoration: BoxDecoration(
-                          color: AppColors.white,
-                          borderRadius: BorderRadius.circular(5.r),
+                    margin: EdgeInsets.only(left: 14.w, right: index == 2 ? 20.w : 0),
+                    width: 140.w,
+                    height: 170.h,
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                      borderRadius: BorderRadius.circular(5.r),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SingleTextLineWidget(
+                            text: vehicleTitleText[index],
+                            weight: FontWeight.w600,
+                          ),
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: SingleTextLineWidget(
-                                text: vehicleTitleText[index],
-                                weight: FontWeight.w600,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 2.h,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 8.w),
-                              child: SingleTextLineWidget(
-                                text: vehicleSubTitleText[index],
-                                size: 10.sp,
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.topRight,
-                              child: ImageWidget(
-                                asset: vehicleIconList[index],
-                                height: 120,
-                                // width: MediaQuery.sizeOf(context).width,
-                              ),
-                            )
-                          ],
+                        SizedBox(
+                          height: 2.h,
                         ),
-                      ))),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8.w),
+                          child: SingleTextLineWidget(
+                            text: vehicleSubTitleText[index],
+                            size: 10.sp,
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: ImageWidget(
+                            asset: vehicleIconList[index],
+                            height: 120,
+                            // width: MediaQuery.sizeOf(context).width,
+                          ),
+                        )
+                      ],
+                    ),
+                  ))),
         ),
         SizedBox(
           height: 50.h,

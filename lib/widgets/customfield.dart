@@ -183,11 +183,10 @@ class CustomField extends ConsumerWidget {
                         border: border,
                         contentPadding: contentPadding,
                         errorMaxLines: 6,
-                        labelText: headtext,
+                        hintText: hint,
                         prefixIcon: pIcon,
                         suffixIcon: sIcon,
-                        // hintText: hint,
-                        labelStyle: hintstyle ??
+                        hintStyle: hintstyle ??
                             Theme.of(context)
                                 .primaryTextTheme
                                 .headlineMedium
