@@ -121,7 +121,7 @@ class _HomeViewState extends ConsumerState<ShippingView> {
                   ).animate().slide(
                       curve: Curves.easeIn,
                       duration: 600.ms,
-                      begin: Offset(-2, 0)),
+                      begin: const Offset(-2, 0)),
                 ),
                 SingleTextLineWidget(
                   text: "Shipment history",

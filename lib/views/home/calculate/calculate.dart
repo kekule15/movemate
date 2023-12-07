@@ -15,7 +15,6 @@ import 'package:movemate/widgets/custom_button.dart';
 import 'package:movemate/widgets/customfield.dart';
 import 'package:movemate/widgets/image_widgets.dart';
 import 'package:movemate/widgets/single_text_line_widget.dart';
-import 'package:masked_text/masked_text.dart';
 
 class CalculatorView extends ConsumerStatefulWidget {
   const CalculatorView({super.key});

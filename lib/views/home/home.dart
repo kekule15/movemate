@@ -47,7 +47,6 @@ class _HomeViewState extends ConsumerState<HomeView> {
               //FadeEffect(),
               //ScaleEffect()
               SlideEffect(duration: 600.ms, curve: Curves.easeOut),
-              
             ],
             child: headerWidget(),
           ),
@@ -139,6 +138,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
               borderRadius: 20.r,
               readonly: true,
               onTap: () {
+                myFocusNode.requestFocus();
                 Get.to(() => const SearchScreenView());
               },
               pIcon: Icon(
@@ -179,149 +179,143 @@ class _HomeViewState extends ConsumerState<HomeView> {
         SizedBox(
           height: 15.h,
         ),
-        Animate(
-          effects: [
-            //FadeEffect(),
-            //ScaleEffect()
-            SlideEffect(
-                //delay: Duration(milliseconds: 10),
-                duration: 200.ms,
-                curve: Curves.elasticIn,
-                begin: Offset(0.0, 30)),
-          ],
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: generalHorizontalPadding.w),
-                child: SingleTextLineWidget(
-                  text: "Tracking",
-                  size: 14.sp,
-                  color: AppColors.headerTextColor,
-                  weight: FontWeight.bold,
-                ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding:
+                  EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w),
+              child: SingleTextLineWidget(
+                text: "Tracking",
+                size: 14.sp,
+                color: AppColors.headerTextColor,
+                weight: FontWeight.bold,
               ),
-              SizedBox(
-                height: 15.h,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: generalHorizontalPadding.w),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(12.r)),
-                  margin: EdgeInsets.zero,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.w),
-                    child: Column(
-                      children: [
-                        ListTile(
-                          contentPadding: EdgeInsets.zero,
-                          title: const SingleTextLineWidget(
-                              text: "Shipment Number"),
-                          subtitle: SingleTextLineWidget(
-                            text: "NEJ20089934122231",
+            ),
+            SizedBox(
+              height: 15.h,
+            ),
+            Padding(
+              padding:
+                  EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: AppColors.white,
+                    borderRadius: BorderRadius.circular(12.r)),
+                margin: EdgeInsets.zero,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.w),
+                  child: Column(
+                    children: [
+                      ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        title:
+                            const SingleTextLineWidget(text: "Shipment Number"),
+                        subtitle: SingleTextLineWidget(
+                          text: "NEJ20089934122231",
+                          weight: FontWeight.bold,
+                          size: 13.sp,
+                          height: 2,
+                        ),
+                        trailing: const ImageWidget(
+                          asset: tractorIcon,
+                        ),
+                      ),
+                      Divider(
+                        color: AppColors.gray.withOpacity(0.6),
+                      ),
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                              child: trackingWidget(
+                                  hasExtra: false,
+                                  title: "Sender",
+                                  subtitle: "Atlanta, 5243",
+                                  hasLeadingWidget: true,
+                                  leadingIcon: sendIcon,
+                                  bgColor: AppColors.themeOrange)),
+                          Expanded(
+                              child: trackingWidget(
+                                  hasExtra: true,
+                                  title: "Time",
+                                  subtitle: "2 day -3 days",
+                                  hasLeadingWidget: false,
+                                  leadingIcon: '',
+                                  bgColor: Colors.transparent))
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                              child: trackingWidget(
+                                  hasExtra: false,
+                                  title: "Receiver",
+                                  subtitle: "Chicago, 6342",
+                                  hasLeadingWidget: true,
+                                  leadingIcon: recieveIcon,
+                                  bgColor: AppColors.green)),
+                          Expanded(
+                              child: trackingWidget(
+                                  hasExtra: false,
+                                  title: "Status",
+                                  subtitle: "Waiting to collect",
+                                  hasLeadingWidget: false,
+                                  leadingIcon: '',
+                                  bgColor: Colors.transparent))
+                        ],
+                      ),
+                      Divider(
+                        color: AppColors.gray.withOpacity(0.6),
+                      ),
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      Center(
+                          child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.add,
+                            size: 15.w,
+                            color: AppColors.themeOrange,
+                          ),
+                          SizedBox(
+                            width: 3.h,
+                          ),
+                          SingleTextLineWidget(
+                            text: "Add Stop",
                             weight: FontWeight.bold,
+                            color: AppColors.themeOrange,
                             size: 13.sp,
-                            height: 2,
                           ),
-                          trailing: const ImageWidget(
-                            asset: tractorIcon,
-                          ),
-                        ),
-                        Divider(
-                          color: AppColors.gray.withOpacity(0.6),
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                                child: trackingWidget(
-                                    hasExtra: false,
-                                    title: "Sender",
-                                    subtitle: "Atlanta, 5243",
-                                    hasLeadingWidget: true,
-                                    leadingIcon: sendIcon,
-                                    bgColor: AppColors.themeOrange)),
-                            Expanded(
-                                child: trackingWidget(
-                                    hasExtra: true,
-                                    title: "Time",
-                                    subtitle: "2 day -3 days",
-                                    hasLeadingWidget: false,
-                                    leadingIcon: '',
-                                    bgColor: Colors.transparent))
-                          ],
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                                child: trackingWidget(
-                                    hasExtra: false,
-                                    title: "Receiver",
-                                    subtitle: "Chicago, 6342",
-                                    hasLeadingWidget: true,
-                                    leadingIcon: recieveIcon,
-                                    bgColor: AppColors.green)),
-                            Expanded(
-                                child: trackingWidget(
-                                    hasExtra: false,
-                                    title: "Status",
-                                    subtitle: "Waiting to collect",
-                                    hasLeadingWidget: false,
-                                    leadingIcon: '',
-                                    bgColor: Colors.transparent))
-                          ],
-                        ),
-                        Divider(
-                          color: AppColors.gray.withOpacity(0.6),
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Center(
-                            child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.add,
-                              size: 15.w,
-                              color: AppColors.themeOrange,
-                            ),
-                            SizedBox(
-                              width: 3.h,
-                            ),
-                            SingleTextLineWidget(
-                              text: "Add Stop",
-                              weight: FontWeight.bold,
-                              color: AppColors.themeOrange,
-                              size: 13.sp,
-                            ),
-                          ],
-                        )),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                      ],
-                    ),
+                        ],
+                      )),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                    ],
                   ),
                 ),
               ),
-              SizedBox(
-                height: 20.h,
-              ),
-            ],
-          ),
-        ),
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+          ],
+        ).animate().slideY(
+            curve: Curves.ease,
+            duration: 200.ms,
+            begin: 1,
+            end: 0,
+            delay: 200.ms),
 
         Padding(
           padding: EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w),
@@ -331,7 +325,12 @@ class _HomeViewState extends ConsumerState<HomeView> {
             weight: FontWeight.bold,
             color: AppColors.headerTextColor,
           ),
-        ),
+        ).animate().slideY(
+            curve: Curves.ease,
+            duration: 200.ms,
+            begin: 4,
+            end: 0,
+            delay: 200.ms),
         SizedBox(
           height: 10.h,
         ),
@@ -436,7 +435,12 @@ class _HomeViewState extends ConsumerState<HomeView> {
                                   height: 120,
                                   // width: MediaQuery.sizeOf(context).width,
                                 ),
-                              )
+                              ).animate().slideX(
+                                  curve: Curves.easeIn,
+                                  duration: 200.ms,
+                                  begin: 3,
+                                  end: 0,
+                                  delay: 100.ms),
                             ],
                           ),
                         )),

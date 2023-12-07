@@ -102,7 +102,7 @@ class _HomeNavigation extends ConsumerState<HomeNavigation> {
           const HomeView(),
           const CalculatorView(),
           const ShippingView(),
-          ProfileView(),
+          const ProfileView(),
         ][pageIndex],
       ),
     );

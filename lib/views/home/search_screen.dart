@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,8 @@ import 'package:movemate/widgets/customfield.dart';
 import 'package:movemate/widgets/image_widgets.dart';
 import 'package:movemate/widgets/single_text_line_widget.dart';
 
+FocusNode myFocusNode = FocusNode();
+
 class SearchScreenView extends ConsumerStatefulWidget {
   const SearchScreenView({super.key});
 
@@ -19,17 +22,25 @@ class SearchScreenView extends ConsumerStatefulWidget {
 }
 
 class _SearchScreenViewState extends ConsumerState<SearchScreenView> {
+  Future<bool> onBackPressed() {
+    Get.offAll(() => const HomeNavigation());
+    return Future.delayed(const Duration(seconds: 2));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          headerWidget(),
-          Padding(
-            padding: EdgeInsets.only(top: 130.h),
-            child: bodyWidget(),
-          ),
-        ],
+    return WillPopScope(
+      onWillPop: onBackPressed,
+      child: Scaffold(
+        body: Stack(
+          children: [
+            headerWidget(),
+            Padding(
+              padding: EdgeInsets.only(top: 130.h),
+              child: bodyWidget(),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -42,8 +53,7 @@ class _SearchScreenViewState extends ConsumerState<SearchScreenView> {
         color: AppColors.primary,
       ),
       child: Padding(
-        padding:
-            EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w ),
+        padding: EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w),
         child: Column(
           children: [
             SizedBox(
@@ -52,19 +62,26 @@ class _SearchScreenViewState extends ConsumerState<SearchScreenView> {
             Row(
               children: [
                 InkWell(
-                    onTap: () {
-                     // Get.back();
-                      Get.offAll(()=> const HomeNavigation());
-                    },
-                    child: const Icon(
-                      Icons.arrow_back_ios_new,
-                      color: AppColors.white,
-                    )),
+                        onTap: () {
+                          // Get.back();
+                          Get.offAll(() => const HomeNavigation());
+                        },
+                        child: const Icon(
+                          Icons.arrow_back_ios_new,
+                          color: AppColors.white,
+                        ))
+                    .animate()
+                    .slide(
+                        curve: Curves.easeIn,
+                        duration: 600.ms,
+                        begin: const Offset(-2, 0)),
                 SizedBox(
                   width: 10.h,
                 ),
                 Expanded(
                   child: CustomField(
+                    autoFocus: true,
+                    focusNode: myFocusNode,
                     borderRadius: 20.r,
                     pIcon: Icon(
                       Icons.search,
@@ -89,7 +106,11 @@ class _SearchScreenViewState extends ConsumerState<SearchScreenView> {
                         ),
                       ),
                     ),
-                  ),
+                  ).animate().scaleX(
+                      alignment: Alignment.topLeft,
+                      curve: Curves.ease,
+                      delay: 100.ms,
+                      duration: 200.ms),
                 ),
               ],
             )
@@ -101,7 +122,7 @@ class _SearchScreenViewState extends ConsumerState<SearchScreenView> {
 
   Widget bodyWidget() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w ),
+      margin: EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w),
       height: 270.h,
       decoration: BoxDecoration(
         color: AppColors.white,
@@ -143,7 +164,8 @@ class _SearchScreenViewState extends ConsumerState<SearchScreenView> {
           ],
         ),
       ),
-    );
+    ).animate().slideY(
+        curve: Curves.ease, duration: 400.ms, begin: 10, end: 0, delay: 100.ms);
   }
 
   Widget searchedData(
