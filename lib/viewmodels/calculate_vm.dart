@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -25,5 +27,20 @@ class CalculateViewModel extends ChangeNotifier {
   void removeCategoryType(String item) {
     categoryList.removeWhere((element) => item == element);
     notifyListeners();
+  }
+
+  int counter = 0;
+  void startCounter(int end) {
+    counter = 1200;
+    notifyListeners();
+    Timer.periodic(const Duration(milliseconds: 2), (Timer timer) {
+      //print('Counter is ${++counter}');
+      counter++;
+      notifyListeners();
+      if (counter == end) {
+        timer.cancel();
+        notifyListeners();
+      }
+    });
   }
 }

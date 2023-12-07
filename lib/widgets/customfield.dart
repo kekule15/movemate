@@ -111,19 +111,10 @@ class CustomField extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // headtext == null
-        //     ? const SizedBox.shrink()
-        //     : Text(headtext!,
-        //         style: Theme.of(context)
-        //             .primaryTextTheme
-        //             .headlineMedium!
-        //             .copyWith(fontSize: 13)),
-        // const SizedBox(
-        //   height: 10,
-        // ),
+       
         Expanded(
           flex: 0,
-          //height: inputFieldHeight,
+          
           child: SizedBox(
               width: width,
               height: height,
@@ -152,7 +143,7 @@ class CustomField extends ConsumerWidget {
                           .primaryTextTheme
                           .headlineMedium!
                           .copyWith(
-                              fontSize: 12.sp, fontWeight: FontWeight.w400),
+                              fontSize: 13.sp, fontWeight: FontWeight.bold, color: AppColors.headerTextColor),
                       inputFormatters: textInputFormatters,
                       decoration: InputDecoration(
                         fillColor: fillColor,

@@ -47,27 +47,9 @@ class InProgressShipments extends ConsumerWidget {
         SizedBox(
           height: 15.h,
         ),
-        const ShipmentCardWidget(
-          status: "progress",
-          title: "Arriving today!",
-          description:
-              "Your delivery, #NEJ20089934122231 from Atlanta, is arriving today!",
-          amount: "1400",
-          date: "Sep 20,2023",
-        ),
-        SizedBox(
-          height: 15.h,
-        ),
-        const ShipmentCardWidget(
-          status: "progress",
-          title: "Arriving today!",
-          description:
-              "Your delivery, #NEJ20089934122231 from Atlanta, is arriving today!",
-          amount: "1400",
-          date: "Sep 20,2023",
-        )
       ],
-    ) .animate()
+    )
+        .animate()
         .slide(
             curve: Curves.ease,
             duration: 300.ms,

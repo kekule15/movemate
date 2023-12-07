@@ -12,6 +12,7 @@ class ActionCustomButton extends StatelessWidget {
   final bool isLoading;
   final bool? disabeled;
   final double? shadow;
+   final double? height;
   final double? borderRadius;
 
   const ActionCustomButton(
@@ -25,6 +26,7 @@ class ActionCustomButton extends StatelessWidget {
       this.disabeled = false,
       this.shadow,
       this.borderRadius,
+      this.height,
       this.isLoading = false})
       : super(key: key);
 
@@ -39,7 +41,7 @@ class ActionCustomButton extends StatelessWidget {
             },
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
-        height: 47.h,
+        height: height?? 47.h,
         child: Card(
           elevation: shadow ?? 0,
           shape: RoundedRectangleBorder(

@@ -25,56 +25,14 @@ class CanceledShipments extends ConsumerWidget {
         SizedBox(
           height: 15.h,
         ),
-        const ShipmentCardWidget(
-          status: "cancel",
-          title: "Arriving today!",
-          description:
-              "Your delivery, #NEJ20089934122231 from Atlanta, is arriving today!",
-          amount: "650",
-          date: "Sep 20,2023",
-        ),
-        SizedBox(
-          height: 15.h,
-        ),
-        const ShipmentCardWidget(
-          status: "cancel",
-          title: "Arriving today!",
-          description:
-              "Your delivery, #NEJ20089934122231 from Atlanta, is arriving today!",
-          amount: "2000",
-          date: "Sep 20,2023",
-        ),
-        SizedBox(
-          height: 15.h,
-        ),
-        const ShipmentCardWidget(
-          status: "cancel",
-          title: "Arriving today!",
-          description:
-              "Your delivery, #NEJ20089934122231 from Atlanta, is arriving today!",
-          amount: "1400",
-          date: "Sep 20,2023",
-        ),
-        SizedBox(
-          height: 15.h,
-        ),
-        const ShipmentCardWidget(
-          status: "cancel",
-          title: "Arriving today!",
-          description:
-              "Your delivery, #NEJ20089934122231 from Atlanta, is arriving today!",
-          amount: "1400",
-          date: "Sep 20,2023",
-        )
       ],
     )
-       .animate()
+        .animate()
         .slide(
             curve: Curves.ease,
             duration: 300.ms,
             begin: const Offset(0, 5),
             end: const Offset(0, 0))
         .then();
-    
   }
 }

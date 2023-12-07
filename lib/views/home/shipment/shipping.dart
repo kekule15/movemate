@@ -34,7 +34,7 @@ class _HomeViewState extends ConsumerState<ShippingView> {
     "5",
     "3",
     "4",
-    "0",
+    "1",
   ];
   @override
   Widget build(BuildContext context) {
