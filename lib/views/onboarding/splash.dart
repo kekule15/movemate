@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // ignore: depend_on_referenced_packages
@@ -48,8 +49,6 @@ class _SplashViewState extends ConsumerState<SplashView>
 
   @override
   Widget build(BuildContext context) {
-  
-
     return Scaffold(
         backgroundColor: AppColors.white,
         body: Center(
@@ -57,7 +56,17 @@ class _SplashViewState extends ConsumerState<SplashView>
             asset: splashLogoIcon,
             width: 200.w,
             height: 100.h,
-          ),
+          )
+              .animate()
+              .fadeIn(curve: Curves.ease, duration: 600.ms, delay: 200.ms)
+              .then(delay: 800.ms)
+              .slideY(
+                  curve: Curves.easeOut,
+                  begin: 0,
+                  end: -10,
+                  duration: 800.ms,
+                  delay: 100.ms)
+              .then(),
         ));
   }
 }

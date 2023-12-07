@@ -1,3 +1,4 @@
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:movemate/style/appColors.dart';
 import 'package:movemate/utils/app_info.dart';
 import 'package:movemate/utils/constvalues.dart';
@@ -27,12 +28,15 @@ class StepperScreen extends ConsumerWidget {
             Expanded(
               flex: 2,
               child: Center(
-                child:  ImageWidget(
-                  asset: logoIcon,
-                  height: 40.h,
-                  width: 200.w,
-                ),
-              ),
+                  child: ImageWidget(
+                asset: logoIcon,
+                height: 40.h,
+                width: 200.w,
+              ).animate().slideY(
+                      curve: Curves.ease,
+                      begin: -10,
+                      end: 0,
+                      duration: 800.ms)),
             ),
             // SizedBox(height: 20.h),
             Expanded(
@@ -47,7 +51,7 @@ class StepperScreen extends ConsumerWidget {
                         .primaryTextTheme
                         .headlineMedium!
                         .copyWith(fontWeight: FontWeight.w700, fontSize: 30.sp),
-                  ),
+                  ).animate().fadeIn(curve: Curves.easeIn).then().slideX(),
                   SizedBox(height: 10.h),
                   Text(
                     'Experience the ease of efficient cargo shipping.',
@@ -56,25 +60,25 @@ class StepperScreen extends ConsumerWidget {
                         .primaryTextTheme
                         .headlineMedium!
                         .copyWith(fontWeight: FontWeight.w300, fontSize: 12.sp),
-                  ),
+                  ).animate().fadeIn(curve: Curves.easeIn).then().slideX(),
                 ],
               ),
             ),
             ActionCustomButton(
-                title: "Signup",
-                isLoading: false,
-                onclick: () {
-                 
-                }),
-            SizedBox(height: 10.h),
-            ActionCustomButton(
-                btnColor: AppColors.secondary,
                 title: "Login",
-                titleColor: AppColors.black,
+                titleColor: AppColors.white,
                 isLoading: false,
                 onclick: () {
                   Get.to(() => const HomeNavigation());
                 }),
+
+            SizedBox(height: 10.h),
+            ActionCustomButton(
+                titleColor: AppColors.black,
+                btnColor: AppColors.themeOrange.withOpacity(0.2),
+                title: "Signup",
+                isLoading: false,
+                onclick: () {}),
             SizedBox(height: 30.h),
             Center(
               child: Text(
@@ -89,7 +93,7 @@ class StepperScreen extends ConsumerWidget {
                         color: AppColors.gray),
               ),
             ),
-             SizedBox(height: 50.h),
+            SizedBox(height: 50.h),
           ],
         ),
       ),
