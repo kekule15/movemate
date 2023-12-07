@@ -12,6 +12,8 @@ import 'package:movemate/widgets/customfield.dart';
 import 'package:movemate/widgets/image_widgets.dart';
 import 'package:movemate/widgets/single_text_line_widget.dart';
 
+import 'package:flutter_animate/flutter_animate.dart';
+
 class HomeView extends ConsumerStatefulWidget {
   const HomeView({super.key});
 
@@ -40,7 +42,15 @@ class _HomeViewState extends ConsumerState<HomeView> {
     return Scaffold(
       body: Stack(
         children: [
-          headerWidget(),
+          Animate(
+            effects: [
+              //FadeEffect(),
+              //ScaleEffect()
+              SlideEffect(duration: 600.ms, curve: Curves.easeOut),
+              
+            ],
+            child: headerWidget(),
+          ),
           Padding(
             padding: EdgeInsets.only(top: 170.h),
             child: bodyWidget(),
@@ -58,8 +68,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
         color: AppColors.primary,
       ),
       child: Padding(
-        padding:
-            EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w ),
+        padding: EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w),
         child: Column(
           children: [
             SizedBox(
@@ -130,7 +139,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
               borderRadius: 20.r,
               readonly: true,
               onTap: () {
-                Get.to(() =>const SearchScreenView());
+                Get.to(() => const SearchScreenView());
               },
               pIcon: Icon(
                 Icons.search,
@@ -167,138 +176,155 @@ class _HomeViewState extends ConsumerState<HomeView> {
       padding: EdgeInsets.zero,
       physics: const BouncingScrollPhysics(),
       children: [
-      SizedBox(
-          height: 15.h,
-        ),
-        Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w ),
-          child: SingleTextLineWidget(
-            text: "Tracking",
-            size: 14.sp,
-            color: AppColors.headerTextColor,
-            weight: FontWeight.bold,
-          ),
-        ),
         SizedBox(
           height: 15.h,
         ),
-        Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w ),
-          child: Container(
-            decoration: BoxDecoration(
-                color: AppColors.white,
-                borderRadius: BorderRadius.circular(12.r)),
-            margin: EdgeInsets.zero,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.w),
-              child: Column(
-                children: [
-                  ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: const SingleTextLineWidget(text: "Shipment Number"),
-                    subtitle: SingleTextLineWidget(
-                      text: "NEJ20089934122231",
-                      weight: FontWeight.bold,
-                      size: 13.sp,
-                      height: 2,
-                    ),
-                    trailing: const ImageWidget(
-                      asset: tractorIcon,
-                    ),
-                  ),
-                  Divider(
-                    color: AppColors.gray.withOpacity(0.6),
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                          child: trackingWidget(
-                              hasExtra: false,
-                              title: "Sender",
-                              subtitle: "Atlanta, 5243",
-                              hasLeadingWidget: true,
-                              leadingIcon: sendIcon,
-                              bgColor: AppColors.themeOrange)),
-                      Expanded(
-                          child: trackingWidget(
-                              hasExtra: true,
-                              title: "Time",
-                              subtitle: "2 day -3 days",
-                              hasLeadingWidget: false,
-                              leadingIcon: '',
-                              bgColor: Colors.transparent))
-                    ],
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                          child: trackingWidget(
-                              hasExtra: false,
-                              title: "Receiver",
-                              subtitle: "Chicago, 6342",
-                              hasLeadingWidget: true,
-                              leadingIcon: recieveIcon,
-                              bgColor: AppColors.green)),
-                      Expanded(
-                          child: trackingWidget(
-                              hasExtra: false,
-                              title: "Status",
-                              subtitle: "Waiting to collect",
-                              hasLeadingWidget: false,
-                              leadingIcon: '',
-                              bgColor: Colors.transparent))
-                    ],
-                  ),
-                  Divider(
-                    color: AppColors.gray.withOpacity(0.6),
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  Center(
-                      child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.add,
-                        size: 15.w,
-                        color: AppColors.themeOrange,
-                      ),
-                      SizedBox(
-                        width: 3.h,
-                      ),
-                      SingleTextLineWidget(
-                        text: "Add Stop",
-                        weight: FontWeight.bold,
-                        color: AppColors.themeOrange,
-                        size: 13.sp,
-                      ),
-                    ],
-                  )),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                ],
+        Animate(
+          effects: [
+            //FadeEffect(),
+            //ScaleEffect()
+            SlideEffect(
+                //delay: Duration(milliseconds: 10),
+                duration: 200.ms,
+                curve: Curves.elasticIn,
+                begin: Offset(0.0, 30)),
+          ],
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: generalHorizontalPadding.w),
+                child: SingleTextLineWidget(
+                  text: "Tracking",
+                  size: 14.sp,
+                  color: AppColors.headerTextColor,
+                  weight: FontWeight.bold,
+                ),
               ),
-            ),
+              SizedBox(
+                height: 15.h,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: generalHorizontalPadding.w),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.white,
+                      borderRadius: BorderRadius.circular(12.r)),
+                  margin: EdgeInsets.zero,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8.w),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          title: const SingleTextLineWidget(
+                              text: "Shipment Number"),
+                          subtitle: SingleTextLineWidget(
+                            text: "NEJ20089934122231",
+                            weight: FontWeight.bold,
+                            size: 13.sp,
+                            height: 2,
+                          ),
+                          trailing: const ImageWidget(
+                            asset: tractorIcon,
+                          ),
+                        ),
+                        Divider(
+                          color: AppColors.gray.withOpacity(0.6),
+                        ),
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                                child: trackingWidget(
+                                    hasExtra: false,
+                                    title: "Sender",
+                                    subtitle: "Atlanta, 5243",
+                                    hasLeadingWidget: true,
+                                    leadingIcon: sendIcon,
+                                    bgColor: AppColors.themeOrange)),
+                            Expanded(
+                                child: trackingWidget(
+                                    hasExtra: true,
+                                    title: "Time",
+                                    subtitle: "2 day -3 days",
+                                    hasLeadingWidget: false,
+                                    leadingIcon: '',
+                                    bgColor: Colors.transparent))
+                          ],
+                        ),
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                                child: trackingWidget(
+                                    hasExtra: false,
+                                    title: "Receiver",
+                                    subtitle: "Chicago, 6342",
+                                    hasLeadingWidget: true,
+                                    leadingIcon: recieveIcon,
+                                    bgColor: AppColors.green)),
+                            Expanded(
+                                child: trackingWidget(
+                                    hasExtra: false,
+                                    title: "Status",
+                                    subtitle: "Waiting to collect",
+                                    hasLeadingWidget: false,
+                                    leadingIcon: '',
+                                    bgColor: Colors.transparent))
+                          ],
+                        ),
+                        Divider(
+                          color: AppColors.gray.withOpacity(0.6),
+                        ),
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        Center(
+                            child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.add,
+                              size: 15.w,
+                              color: AppColors.themeOrange,
+                            ),
+                            SizedBox(
+                              width: 3.h,
+                            ),
+                            SingleTextLineWidget(
+                              text: "Add Stop",
+                              weight: FontWeight.bold,
+                              color: AppColors.themeOrange,
+                              size: 13.sp,
+                            ),
+                          ],
+                        )),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+            ],
           ),
         ),
-        SizedBox(
-          height: 20.h,
-        ),
+
         Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w ),
+          padding: EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w),
           child: SingleTextLineWidget(
             text: "Available vehicles",
             size: 14.sp,
@@ -309,53 +335,112 @@ class _HomeViewState extends ConsumerState<HomeView> {
         SizedBox(
           height: 10.h,
         ),
+        // Column(
+        //     children: AnimateList(
+        //   interval: 400.ms,
+        //   effects: [FadeEffect(duration: 300.ms)],
+        //   children:  List.generate(
+        //           vehicleIconList.length,
+        //           (index) => Container(
+        //                 margin: EdgeInsets.only(
+        //                     left: 14.w, right: index == 2 ? 20.w : 0),
+        //                 width: 140.w,
+        //                 height: 170.h,
+        //                 decoration: BoxDecoration(
+        //                   color: AppColors.white,
+        //                   borderRadius: BorderRadius.circular(5.r),
+        //                 ),
+        //                 child: Column(
+        //                   crossAxisAlignment: CrossAxisAlignment.start,
+        //                   children: [
+        //                     Padding(
+        //                       padding: const EdgeInsets.all(8.0),
+        //                       child: SingleTextLineWidget(
+        //                         text: vehicleTitleText[index],
+        //                         weight: FontWeight.w600,
+        //                       ),
+        //                     ),
+        //                     SizedBox(
+        //                       height: 2.h,
+        //                     ),
+        //                     Padding(
+        //                       padding: EdgeInsets.symmetric(horizontal: 8.w),
+        //                       child: SingleTextLineWidget(
+        //                         text: vehicleSubTitleText[index],
+        //                         size: 10.sp,
+        //                       ),
+        //                     ),
+        //                     Align(
+        //                       alignment: Alignment.topRight,
+        //                       child: ImageWidget(
+        //                         asset: vehicleIconList[index],
+        //                         height: 120,
+        //                         // width: MediaQuery.sizeOf(context).width,
+        //                       ),
+        //                     )
+        //                   ],
+        //                 ),
+        //               )
+        //               ),
+        // )
+
+        //),
         SizedBox(
           height: 150.h,
           child: ListView(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
-              children: List.generate(
-                  vehicleIconList.length,
-                  (index) => Container(
-                    margin: EdgeInsets.only(left: 14.w, right: index == 2 ? 20.w : 0),
-                    width: 140.w,
-                    height: 170.h,
-                    decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(5.r),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: SingleTextLineWidget(
-                            text: vehicleTitleText[index],
-                            weight: FontWeight.w600,
+              children: AnimateList(
+                interval: 200.ms,
+                effects: [
+                  FadeEffect(duration: 200.ms, curve: Curves.easeIn),
+                  // SlideEffect(duration: 200.ms),
+                  // MoveEffect(duration: 200.ms)
+                ],
+                children: List.generate(
+                    vehicleIconList.length,
+                    (index) => Container(
+                          margin: EdgeInsets.only(
+                              left: 14.w, right: index == 2 ? 20.w : 0),
+                          width: 140.w,
+                          height: 170.h,
+                          decoration: BoxDecoration(
+                            color: AppColors.white,
+                            borderRadius: BorderRadius.circular(5.r),
                           ),
-                        ),
-                        SizedBox(
-                          height: 2.h,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8.w),
-                          child: SingleTextLineWidget(
-                            text: vehicleSubTitleText[index],
-                            size: 10.sp,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: SingleTextLineWidget(
+                                  text: vehicleTitleText[index],
+                                  weight: FontWeight.w600,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 2.h,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 8.w),
+                                child: SingleTextLineWidget(
+                                  text: vehicleSubTitleText[index],
+                                  size: 10.sp,
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.topRight,
+                                child: ImageWidget(
+                                  asset: vehicleIconList[index],
+                                  height: 120,
+                                  // width: MediaQuery.sizeOf(context).width,
+                                ),
+                              )
+                            ],
                           ),
-                        ),
-                        Align(
-                          alignment: Alignment.topRight,
-                          child: ImageWidget(
-                            asset: vehicleIconList[index],
-                            height: 120,
-                            // width: MediaQuery.sizeOf(context).width,
-                          ),
-                        )
-                      ],
-                    ),
-                  ))),
+                        )),
+              )),
         ),
         SizedBox(
           height: 50.h,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -14,6 +15,7 @@ import 'package:movemate/widgets/custom_button.dart';
 import 'package:movemate/widgets/customfield.dart';
 import 'package:movemate/widgets/image_widgets.dart';
 import 'package:movemate/widgets/single_text_line_widget.dart';
+import 'package:masked_text/masked_text.dart';
 
 class CalculatorView extends ConsumerStatefulWidget {
   const CalculatorView({super.key});
@@ -23,6 +25,9 @@ class CalculatorView extends ConsumerStatefulWidget {
 }
 
 class _CalculatorViewState extends ConsumerState<CalculatorView> {
+  // Create a MaskedTextController with the mask pattern
+  // final controller = MaskedTextController(mask: '00-0000');
+  // final con = MaskedTextField()
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,6 +92,7 @@ class _CalculatorViewState extends ConsumerState<CalculatorView> {
   Widget bodyWidget() {
     var viewModel = ref.watch(calculateProviderViewModel);
     List<String> caetgoryItemList = viewModel.categoryListType;
+    
 
     var selectedItem = viewModel.categoryList;
     return Padding(
@@ -139,6 +145,11 @@ class _CalculatorViewState extends ConsumerState<CalculatorView> {
                     fillColor: AppColors.gray.withOpacity(0.1),
                     pIcon: const Icon(Icons.scale_outlined),
                     hint: "Approx weight",
+                    keyboardType: TextInputType.number,
+                    textInputFormatters: [
+                      FilteringTextInputFormatter.deny(RegExp('[ ]')),
+                      FilteringTextInputFormatter.digitsOnly,
+                    ],
                   ),
                 ],
               ),
@@ -260,7 +271,7 @@ class _CalculatorViewState extends ConsumerState<CalculatorView> {
               titleColor: AppColors.white,
               isLoading: false,
               onclick: () {
-                Get.to(()=> const TotalEstimateView());
+                Get.to(() => const TotalEstimateView());
               }),
           SizedBox(
             height: 50.w,

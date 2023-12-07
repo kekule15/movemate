@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movemate/views/home/shipment/widgets/shipment_card_widget.dart';
@@ -66,6 +67,12 @@ class CompletedShipments extends ConsumerWidget {
           date: "Sep 20,2023",
         )
       ],
-    );
+    ) .animate()
+        .slide(
+            curve: Curves.ease,
+            duration: 300.ms,
+            begin: const Offset(0, 5),
+            end: const Offset(0, 0))
+        .then();
   }
 }

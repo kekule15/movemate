@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movemate/providers/home_navigation_provider.dart';
@@ -60,7 +61,14 @@ class _HomeViewState extends ConsumerState<ShippingView> {
                     weight: FontWeight.bold,
                     color: AppColors.headerTextColor,
                     size: 18.sp,
-                  ),
+                  ).animate().slide(
+                      curve: Curves.ease,
+                      duration: 300.ms,
+                      //delay: 100.ms,
+                      begin: const Offset(0, 3)
+
+                      //delay: 100.ms
+                      ),
                   SizedBox(
                     height: 20.h,
                   ),
@@ -110,14 +118,21 @@ class _HomeViewState extends ConsumerState<ShippingView> {
                     Icons.arrow_back_ios_new_outlined,
                     color: AppColors.white,
                     size: 20.w,
-                  ),
+                  ).animate().slide(
+                      curve: Curves.easeIn,
+                      duration: 600.ms,
+                      begin: Offset(-2, 0)),
                 ),
                 SingleTextLineWidget(
                   text: "Shipment history",
                   color: AppColors.white,
                   weight: FontWeight.bold,
                   size: 18.sp,
-                ),
+                ).animate().slide(
+                    curve: Curves.easeIn,
+                    duration: 600.ms,
+                    begin: Offset(0, 1),
+                    end: Offset(0, 0)),
                 const SizedBox()
               ],
             ),
@@ -185,13 +200,18 @@ class _HomeViewState extends ConsumerState<ShippingView> {
                         ),
                       )),
             ),
-          ),
+          )
+              .animate()
+              .slide(
+                  curve: Curves.ease,
+                  duration: 200.ms,
+                  begin: const Offset(4, -1),
+                  end: const Offset(0, 0))
+              .then(),
         ],
       ),
     );
   }
-
-
 
   Widget bodyWidget() {
     return ListView(
@@ -252,6 +272,14 @@ class _HomeViewState extends ConsumerState<ShippingView> {
           date: "Sep 20,2023",
         )
       ],
-    );
+    )
+        .animate()
+        .slide(
+            curve: Curves.ease,
+            duration: 300.ms,
+            begin: const Offset(0, 5),
+            end: const Offset(0, 0))
+        .then();
+   
   }
 }

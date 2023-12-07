@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:movemate/style/appColors.dart';
 import 'package:movemate/utils/constvalues.dart';
 import 'package:movemate/utils/svgs.dart';
+import 'package:movemate/views/home/navigation_page.dart';
 import 'package:movemate/widgets/customfield.dart';
 import 'package:movemate/widgets/image_widgets.dart';
 import 'package:movemate/widgets/single_text_line_widget.dart';
@@ -52,7 +53,8 @@ class _SearchScreenViewState extends ConsumerState<SearchScreenView> {
               children: [
                 InkWell(
                     onTap: () {
-                      Get.back();
+                     // Get.back();
+                      Get.offAll(()=> const HomeNavigation());
                     },
                     child: const Icon(
                       Icons.arrow_back_ios_new,
