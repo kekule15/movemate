@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -42,33 +43,66 @@ class _HomeNavigation extends ConsumerState<HomeNavigation> {
     return WillPopScope(
       onWillPop: onBackPressed,
       child: Scaffold(
-        bottomNavigationBar:  AnimatedBottomNavigationBar.builder(
-          elevation: 0,
-          backgroundColor: AppColors.white,
-          itemCount: iconList.length,
-          tabBuilder: (int index, bool isActive) {
-            return Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: index == 0 || index == 3 ? 0.w : 10.w),
-              child: NavCardWidget(
-                title: iconText[index],
-                icon: iconList[index],
-                isActive: isActive,
-              ),
-            );
-          },
-          activeIndex: pageIndex,
-          gapLocation: GapLocation.none,
-          notchSmoothness: NotchSmoothness.sharpEdge,
-          onTap: viewModel.changeIndex,
+        bottomNavigationBar: pageIndex == 0
+            ? AnimatedBottomNavigationBar.builder(
+                elevation: 0,
+                backgroundColor: AppColors.white,
+                itemCount: iconList.length,
+                tabBuilder: (int index, bool isActive) {
+                  return Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: index == 0 || index == 3 ? 0.w : 10.w),
+                    child: NavCardWidget(
+                      title: iconText[index],
+                      icon: iconList[index],
+                      isActive: isActive,
+                    ),
+                  );
+                },
+                activeIndex: pageIndex,
+                gapLocation: GapLocation.none,
+                notchSmoothness: NotchSmoothness.sharpEdge,
+                onTap: (val) {
+                  viewModel.changeIndex(val);
+                  viewModel.hideBottomSheet();
+                },
 
-          //other params
-        ),
+                //other params
+              )
+            : Visibility(
+                visible: viewModel.hideNavBar,
+                child: AnimatedBottomNavigationBar.builder(
+                  elevation: 0,
+                  backgroundColor: AppColors.white,
+                  itemCount: iconList.length,
+                  tabBuilder: (int index, bool isActive) {
+                    return Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: index == 0 || index == 3 ? 0.w : 10.w),
+                      child: NavCardWidget(
+                        title: iconText[index],
+                        icon: iconList[index],
+                        isActive: isActive,
+                      ),
+                    );
+                  },
+                  activeIndex: pageIndex,
+                  gapLocation: GapLocation.none,
+                  notchSmoothness: NotchSmoothness.sharpEdge,
+                  onTap: viewModel.changeIndex,
+
+                  //other params
+                )
+                    .animate()
+                    .fadeOut(
+                        curve: Curves.easeOut, duration: 400.ms, delay: 400.ms)
+                    .then(),
+              ),
         body: [
           const HomeView(),
           const CalculatorView(),
           const ShippingView(),
-           ProfileView(),
+          ProfileView(),
         ][pageIndex],
       ),
     );

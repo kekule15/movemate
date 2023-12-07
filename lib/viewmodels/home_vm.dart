@@ -7,12 +7,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomeViewModel extends ChangeNotifier {
   int selectedIndex = 0;
+  bool hideNavBar = true;
   final Ref ref;
   HomeViewModel(this.ref);
 
   void changeIndex(int index) {
     selectedIndex = index;
+    if (index == 0) {
+      hideNavBar = true;
+      notifyListeners();
+    }
     notifyListeners();
+  }
+
+  void hideBottomSheet() {
+    Future.delayed(const Duration(milliseconds: 800), () {
+      hideNavBar = false;
+      notifyListeners();
+    });
   }
 
   bool stateValue = true;
@@ -28,6 +40,4 @@ class HomeViewModel extends ChangeNotifier {
     stateValue = true;
     notifyListeners();
   }
-
-
 }
