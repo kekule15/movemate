@@ -30,7 +30,7 @@ class StepperScreen extends ConsumerWidget {
               child: Center(
                   child: ImageWidget(
                 asset: logoIcon,
-                height: 40.h,
+                height: 50.h,
                 width: 200.w,
               ).animate().slideY(
                       curve: Curves.ease,
@@ -45,12 +45,15 @@ class StepperScreen extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Shipping \nmade simple.',
+                    'Shipping\n made simple.',
                     textAlign: TextAlign.center,
                     style: Theme.of(context)
                         .primaryTextTheme
                         .headlineMedium!
-                        .copyWith(fontWeight: FontWeight.w700, fontSize: 30.sp),
+                        .copyWith(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 30.sp,
+                            color: AppColors.headerTextColor),
                   ).animate().fadeIn(curve: Curves.easeIn).then().slideX(),
                   SizedBox(height: 10.h),
                   Text(

@@ -316,7 +316,6 @@ class _HomeViewState extends ConsumerState<HomeView> {
             begin: 1,
             end: 0,
             delay: 200.ms),
-
         Padding(
           padding: EdgeInsets.symmetric(horizontal: generalHorizontalPadding.w),
           child: SingleTextLineWidget(
@@ -327,125 +326,72 @@ class _HomeViewState extends ConsumerState<HomeView> {
           ),
         ).animate().slideY(
             curve: Curves.ease,
-            duration: 200.ms,
-            begin: 4,
+            duration: 500.ms,
+            begin: 0.7,
             end: 0,
-            delay: 200.ms),
+            delay: 100.ms),
         SizedBox(
           height: 10.h,
         ),
-        // Column(
-        //     children: AnimateList(
-        //   interval: 400.ms,
-        //   effects: [FadeEffect(duration: 300.ms)],
-        //   children:  List.generate(
-        //           vehicleIconList.length,
-        //           (index) => Container(
-        //                 margin: EdgeInsets.only(
-        //                     left: 14.w, right: index == 2 ? 20.w : 0),
-        //                 width: 140.w,
-        //                 height: 170.h,
-        //                 decoration: BoxDecoration(
-        //                   color: AppColors.white,
-        //                   borderRadius: BorderRadius.circular(5.r),
-        //                 ),
-        //                 child: Column(
-        //                   crossAxisAlignment: CrossAxisAlignment.start,
-        //                   children: [
-        //                     Padding(
-        //                       padding: const EdgeInsets.all(8.0),
-        //                       child: SingleTextLineWidget(
-        //                         text: vehicleTitleText[index],
-        //                         weight: FontWeight.w600,
-        //                       ),
-        //                     ),
-        //                     SizedBox(
-        //                       height: 2.h,
-        //                     ),
-        //                     Padding(
-        //                       padding: EdgeInsets.symmetric(horizontal: 8.w),
-        //                       child: SingleTextLineWidget(
-        //                         text: vehicleSubTitleText[index],
-        //                         size: 10.sp,
-        //                       ),
-        //                     ),
-        //                     Align(
-        //                       alignment: Alignment.topRight,
-        //                       child: ImageWidget(
-        //                         asset: vehicleIconList[index],
-        //                         height: 120,
-        //                         // width: MediaQuery.sizeOf(context).width,
-        //                       ),
-        //                     )
-        //                   ],
-        //                 ),
-        //               )
-        //               ),
-        // )
-
-        //),
         SizedBox(
-          height: 150.h,
-          child: ListView(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              children: AnimateList(
-                interval: 200.ms,
-                effects: [
-                  FadeEffect(duration: 200.ms, curve: Curves.easeIn),
-                  // SlideEffect(duration: 200.ms),
-                  // MoveEffect(duration: 200.ms)
-                ],
-                children: List.generate(
-                    vehicleIconList.length,
-                    (index) => Container(
-                          margin: EdgeInsets.only(
-                              left: 14.w, right: index == 2 ? 20.w : 0),
-                          width: 140.w,
-                          height: 170.h,
-                          decoration: BoxDecoration(
-                            color: AppColors.white,
-                            borderRadius: BorderRadius.circular(5.r),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: SingleTextLineWidget(
-                                  text: vehicleTitleText[index],
-                                  weight: FontWeight.w600,
+                height: 150.h,
+                child: ListView(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
+                  children: List.generate(
+                      vehicleIconList.length,
+                      (index) => Container(
+                            margin: EdgeInsets.only(
+                                left: 14.w, right: index == 2 ? 20.w : 0),
+                            width: 140.w,
+                            height: 170.h,
+                            decoration: BoxDecoration(
+                              color: AppColors.white,
+                              borderRadius: BorderRadius.circular(5.r),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: SingleTextLineWidget(
+                                    text: vehicleTitleText[index],
+                                    weight: FontWeight.w600,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 2.h,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 8.w),
-                                child: SingleTextLineWidget(
-                                  text: vehicleSubTitleText[index],
-                                  size: 10.sp,
+                                SizedBox(
+                                  height: 2.h,
                                 ),
-                              ),
-                              Align(
-                                alignment: Alignment.topRight,
-                                child: ImageWidget(
-                                  asset: vehicleIconList[index],
-                                  height: 120,
-                                  // width: MediaQuery.sizeOf(context).width,
+                                Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 8.w),
+                                  child: SingleTextLineWidget(
+                                    text: vehicleSubTitleText[index],
+                                    size: 10.sp,
+                                  ),
                                 ),
-                              ).animate().slideX(
-                                  curve: Curves.easeIn,
-                                  duration: 200.ms,
-                                  begin: 3,
-                                  end: 0,
-                                  delay: 100.ms),
-                            ],
-                          ),
-                        )),
-              )),
-        ),
+                                Align(
+                                  alignment: Alignment.topRight,
+                                  child: ImageWidget(
+                                    asset: vehicleIconList[index],
+                                    height: 120,
+                                    // width: MediaQuery.sizeOf(context).width,
+                                  ),
+                                ).animate().slideX(
+                                    curve: Curves.easeIn,
+                                    duration: 700.ms,
+                                    begin: 1,
+                                    end: 0,
+                                    delay: 100.ms),
+                              ],
+                            ),
+                          )),
+                )).animate().slideX(
+              curve: Curves.easeIn,
+              duration: 400.ms,
+              begin: 10,
+            ),
         SizedBox(
           height: 50.h,
         ),

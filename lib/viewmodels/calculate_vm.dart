@@ -33,7 +33,7 @@ class CalculateViewModel extends ChangeNotifier {
   void startCounter(int end) {
     counter = 1200;
     notifyListeners();
-    Timer.periodic(const Duration(milliseconds: 2), (Timer timer) {
+    Timer.periodic(const Duration(milliseconds: 10), (Timer timer) {
       //print('Counter is ${++counter}');
       counter++;
       notifyListeners();
